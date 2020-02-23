@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
-import { Text, View, Button } from 'react-native';
+import { Text, View } from 'react-native';
+import {
+  Avatar,
+  Button,
+  Card,
+  Title,
+  Paragraph,
+  List,
+  Headline,
+} from 'react-native-paper';
 
 export class Home extends Component {
   render() {
