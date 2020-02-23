@@ -10,7 +10,21 @@ import {
   Headline,
 } from 'react-native-paper';
 
+
 export class Home extends Component {
+
+  componentDidMount() {
+    this.fetchLastestPost();
+  }
+
+  async fetchLastestPost() {
+    const response = await fetch(
+      'https://kriss.io/wp-json/wp/v2/posts?per_page=5'
+    );
+    const posts = await response.json();
+    this.setState({posts});
+  }
+
   render() {
     return (
       <View>
