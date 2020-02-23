@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, FlatList } from 'react-native';
+import { Text, View, FlatList, ActivityIndicator } from 'react-native';
 import {
   Avatar,
   Button,
@@ -17,6 +17,7 @@ export class Home extends Component {
     this.state = {
       posts: [],
       isFetching: false,
+      page: 1
     }
   }
 
@@ -25,12 +26,15 @@ export class Home extends Component {
   }
 
   async fetchLastestPost() {
+    let page = this.state.page;
     const response = await fetch(
-      'https://kriss.io/wp-json/wp/v2/posts?per_page=5'
+      `https://kriss.io/wp-json/wp/v2/posts?per_page=5&page=${page}`,
     );
     const posts = await response.json();
-    // this.setState({posts});
-    this.setState({ posts: posts, isFetching: false});
+    this.setState({ 
+      posts: page === 1 ? posts : [...this.state.posts, ...posts],
+      isFetching: false
+    });
   }
 
   onRefresh() {
@@ -42,6 +46,17 @@ export class Home extends Component {
     })
   }
 
+  handleLoadMore = () => {
+    this.setState(
+      {
+        page: this.state.page + 1,
+      },
+      () => {
+        this.fetchLastestPost();
+      },
+    );
+  };
+
   render() {
     return (
       <View>
@@ -50,6 +65,9 @@ export class Home extends Component {
           data={this.state.posts}
           onRefresh={() => this.onRefresh()}
           refreshing={this.state.isFetching}
+          onEndReached={this.handleLoadMore}
+          onEndReachedThreshold={0.1}
+          ListFooterComponent={this.renderFooter}
           renderItem={({ item }) => (
               <Card
                 style={{
@@ -72,6 +90,21 @@ export class Home extends Component {
       </View>
     )
   }
+
+  renderFooter = () => {
+    if (this.state.isFetching) return null;
+    return (
+      <View
+        style={{
+          paddingVertical: 20,
+          borderTopWidth: 1,
+          borderColor: "#CED0CE"
+        }}
+      >
+        <ActivityIndicator animating size="large" />
+      </View>
+    );
+  };
 }
 
 export default Home
