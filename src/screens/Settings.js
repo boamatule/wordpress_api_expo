@@ -5,7 +5,7 @@ export class Settings extends Component {
   render() {
     return (
       <View>
-        <Text>Ye</Text>
+        <Text>Yeoooooo</Text>
       </View>
     )
   }
