@@ -15,7 +15,8 @@ export class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      posts: []
+      posts: [],
+      isFetching: false,
     }
   }
 
@@ -28,7 +29,17 @@ export class Home extends Component {
       'https://kriss.io/wp-json/wp/v2/posts?per_page=5'
     );
     const posts = await response.json();
-    this.setState({posts});
+    // this.setState({posts});
+    this.setState({ posts: posts, isFetching: false});
+  }
+
+  onRefresh() {
+    this.setState({
+      isFetching: true
+    },
+    function() {
+      this.fetchLastestPost()
+    })
   }
 
   render() {
@@ -37,6 +48,8 @@ export class Home extends Component {
        <Headline style={{ marginLeft: 30 }}>Lastest Post</Headline>
         <FlatList
           data={this.state.posts}
+          onRefresh={() => this.onRefresh()}
+          refreshing={this.state.isFetching}
           renderItem={({ item }) => (
               <Card
                 style={{
