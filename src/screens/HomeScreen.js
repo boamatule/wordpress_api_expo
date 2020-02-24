@@ -9,14 +9,7 @@ import {
   List,
   Headline,
 } from 'react-native-paper';
-import {
-  Placeholder,
-  PlaceholderMedia,
-  PlaceholderLine,
-  Fade
-} from "rn-placeholder";
-import ContentPlaceholder from '../component/ContentPlaceholder'
-
+import ContentPlaceholder from '../component/ContentPlaceholder';
 export class Home extends Component {
   constructor(props) {
     super(props);
@@ -63,14 +56,10 @@ export class Home extends Component {
     );
   };
 
-  render() {
-    if (this.state.isLoading) { 
-     return (
-      <View style={{ marginTop: 23, padding: 33 }}>
-          <RNPlaceHolder />
-      </View> 
-     );
-    } else { 
+  render() { 
+    if (this.state.isFetching) {
+      return <ContentPlaceholder /> 
+    } else {
       return ( 
       <View> 
        <Headline style={{ marginLeft: 30 }}>Lastest Post</Headline>
@@ -101,13 +90,12 @@ export class Home extends Component {
           keyExtractor={index => index.toString()}
       />
       </View>
-    )} 
+    )
   }
+}
 
-  renderFooter = () => {
-    if (this.state.isFetching) {
-      return <ContentPlaceholder />;
-    } else {
+renderFooter = () => {
+  if (this.state.isFetching) return null;
     return (
       <View
         style={{
@@ -118,7 +106,7 @@ export class Home extends Component {
       >
         <ActivityIndicator animating size="large" />
       </View>
-    );}
+    );
   };
 }
 
