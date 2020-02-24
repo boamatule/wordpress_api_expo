@@ -64,12 +64,8 @@ export class Home extends Component {
   };
 
   render() {
-    if (this.state.isLoading) { 
-     return (
-      <View style={{ marginTop: 23, padding: 33 }}>
-          <RNPlaceHolder />
-      </View> 
-     );
+    if (this.state.isFetching) {
+      return <ContentPlaceholder />;
     } else { 
       return ( 
       <View> 
@@ -112,9 +108,7 @@ export class Home extends Component {
   }
 
   renderFooter = () => {
-    if (this.state.isFetching) {
-      return <ContentPlaceholder />;
-    } else {
+    if (this.state.isFetching) return null;
     return (
       <View
         style={{
@@ -127,6 +121,6 @@ export class Home extends Component {
       </View>
     );}
   };
-}
+
 
 export default Home
