@@ -4,7 +4,7 @@ import HomeScreen from '../screens/HomeScreen.js';
 import SinglePost from '../screens/SinglePost.js'
 
 export default function HomeStack() {
-const Stack = createStackNavigator()
+const Stack = createStackNavigator();
   return (
     <Stack.Navigator>
       <Stack.Screen name="Home" component={HomeScreen} />

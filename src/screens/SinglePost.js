@@ -13,6 +13,7 @@ import {
 } from 'react-native-paper';
 import HTML from 'react-native-htmlview';
 import moment from 'moment';
+import ContentPlaceholder from '../component/ContentPlaceholder';
 
 export default class SinglePost extends React.Component {
   constructor(props) {
@@ -42,6 +43,9 @@ async fetchPost() {
 
   render() {
     let post = this.state.post;
+    if (this.state.isloading) {
+      return <ContentPlaceholder />
+    }
     return (
       <ScrollView>
         <Card>
