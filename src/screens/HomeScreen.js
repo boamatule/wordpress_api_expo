@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, FlatList, ActivityIndicator } from 'react-native';
+import { Text, View, FlatList, ActivityIndicator, TouchableOpacity } from 'react-native';
 import {
   Avatar,
   Button,
@@ -9,12 +9,12 @@ import {
   List,
   Headline,
 } from 'react-native-paper';
-import {
-  Placeholder,
-  PlaceholderMedia,
-  PlaceholderLine,
-  Fade
-} from "rn-placeholder";
+// import {
+//   Placeholder,
+//   PlaceholderMedia,
+//   PlaceholderLine,
+//   Fade
+// } from "rn-placeholder";
 import ContentPlaceholder from '../component/ContentPlaceholder'
 
 export class Home extends Component {
@@ -82,6 +82,12 @@ export class Home extends Component {
           onEndReachedThreshold={0.1}
           ListFooterComponent={this.renderFooter}
           renderItem={({ item }) => (
+            <TouchableOpacity
+              onPress={() =>
+                this.props.navigation.navigate('SinglePost', {
+                  post_id: item.id,
+                })
+              }> 
               <Card
                 style={{
                   shadowOffset: { width: 5, height: 5 },
@@ -97,6 +103,7 @@ export class Home extends Component {
                   source={{ uri: item.jetpack_featured_media_url }}
                 />
               </Card>
+            </TouchableOpacity>
           )}
           keyExtractor={index => index.toString()}
       />
