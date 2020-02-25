@@ -7,7 +7,7 @@ import {
   Title,
   Paragraph,
   List,
-  Headline,
+  Headline
 } from 'react-native-paper';
 import ContentPlaceholder from '../component/ContentPlaceholder'
 import SinglePost from './SinglePost';

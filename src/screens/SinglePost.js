@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import {
   View,
   ScrollView,
-  ActivityIndicator
+  ActivityIndicator,
+  TouchableOpacity,
+  Share
 } from 'react-native';
 import {
   Avatar,
@@ -15,6 +17,7 @@ import {
 import HTML from 'react-native-htmlview';
 import moment from 'moment';
 import ContentPlaceholder from '../component/ContentPlaceholder';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default class SinglePost extends React.Component {
   constructor(props) {
@@ -42,6 +45,13 @@ async fetchPost() {
     });
   }
 
+  onShare = async (title, uri) => {
+    Share.share({
+      title: title,
+      url: uri,
+    });
+  };
+
   render() {
     let post = this.state.post;
     if (this.state.isloading) {
@@ -66,6 +76,20 @@ async fetchPost() {
                   )
                 }}
               />
+            <List.Item 
+              title={`${post[0]._embedded.author[0].name}`}
+              description={`${post[0]._embedded.author[0].description}`}
+               right={props => {
+                return (
+                  <TouchableOpacity
+                    onPress={() =>
+                      this.onShare(post[0].title.rendered, post[0].link)
+                    }>
+                    <MaterialCommunityIcons name="share" size={30} />
+                  </TouchableOpacity>
+                );
+              }}
+            />
             <List.Item
               title={`Published on ${moment(
                 post[0].date,
