@@ -32,7 +32,9 @@ export default class SinglePost extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchPost();
+    this.fetchPost().then(() => {
+      this.renderBookMark(this.navigation.getParam('post_id'));
+    });
   }
 
   async fetchPost() {
@@ -79,6 +81,19 @@ export default class SinglePost extends React.Component {
       return res.filter(e => e !== post_id);
     });
     await AsyncStorage.setItem('bookmark', JSON.stringify(bookmark));
+  };
+
+  renderBookMark = async post_id => {
+    await AsyncStorage.getItem('bookmark').then(token => {
+      const res = JSON.parse(token);
+      let data = res.find(value => value === post_id);
+      if (data !== null) {
+        let data = res.find(value => value === post_id);
+        return data == null
+          ? this.setState({ bookmark: false})
+          : this.setState({ bookmark: true});
+      }
+    });
   };
 
   render() {
