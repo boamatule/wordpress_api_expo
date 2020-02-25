@@ -55,8 +55,22 @@ export default class SinglePost extends React.Component {
   };
 
   saveBookMark = async post_id => {
-    this.setState({bookmark: true});
-  }
+    this.setState({ bookmark: true });
+    await AsyncStorage.getItem("bookmark").then(token => {
+      const res = JSON.parse(token);
+      if (res !== null) {
+        let data = res.find(value => value === post_id);
+        if (data == null) {
+          res.push(post_id);
+          AsyncStorage.setItem("bookmark", JSON.stringify(res));
+        }
+      } else {
+        let bookmark = [];
+        bookmark.push(post_id);
+        AsyncStorage.setItem("bookmark", JSON.stringify(bookmark));
+      }
+    });
+  };
 
   render() {
     let post = this.state.post;
