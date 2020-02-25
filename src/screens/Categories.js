@@ -1,7 +1,21 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import {
+  FlatList,
+  ScrollView,
+  View,
+  TouchableOpacity
+} from 'react-native';
+import { Card, Title } from 'react-native-paper';
 
-export class Categories extends Component {
+export default class Categories extends Component {
+  constructor(prop) {
+    super(props);
+
+    this.state = {
+      loading: false,
+      categories: []
+    };
+  }
   render() {
     return (
       <View>
@@ -10,5 +24,3 @@ export class Categories extends Component {
     )
   }
 }
-
-export default Categories 
