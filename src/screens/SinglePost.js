@@ -9,7 +9,8 @@ import {
   Button,
   Card,
   Paragraph,
-  List
+  List,
+  Title
 } from 'react-native-paper';
 import HTML from 'react-native-htmlview';
 import moment from 'moment';
@@ -59,7 +60,7 @@ async fetchPost() {
                     <Avatar.Image
                       size={55}
                       source={{
-                        uri: `${post[0]._embedded.author[0].avatar.urls[96]}`,
+                        uri: `${post[0]._embedded.author[0].avatar_urls[96]}`,
                       }}
                     />
                   )

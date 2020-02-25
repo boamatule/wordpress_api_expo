@@ -9,13 +9,8 @@ import {
   List,
   Headline,
 } from 'react-native-paper';
-// import {
-//   Placeholder,
-//   PlaceholderMedia,
-//   PlaceholderLine,
-//   Fade
-// } from "rn-placeholder";
 import ContentPlaceholder from '../component/ContentPlaceholder'
+import SinglePost from './SinglePost';
 
 export class Home extends Component {
   constructor(props) {
@@ -81,7 +76,7 @@ export class Home extends Component {
             <TouchableOpacity
               onPress={() =>
                 this.props.navigation.navigate('SinglePost', {
-                  post_id: item.id,
+                   post_id: item.id
                 })
               }> 
               <Card
