@@ -72,6 +72,15 @@ export default class SinglePost extends React.Component {
     });
   };
 
+  removeBookMark = async post_id => {
+    this.setState({ bookmark: false });
+    const bookmark = await AsyncStorage.getItem('bookmark').then(token => {
+      const res = JSON.parse(token);
+      return res.filter(e => e !== post_id);
+    });
+    await AsyncStorage.setItem('bookmark', JSON.stringify(bookmark));
+  };
+
   render() {
     let post = this.state.post;
     if (this.state.isloading) {
