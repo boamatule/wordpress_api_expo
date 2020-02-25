@@ -4,7 +4,8 @@ import {
   ScrollView,
   ActivityIndicator,
   TouchableOpacity,
-  Share
+  Share,
+  AsyncStorage
 } from "react-native";
 import {
   Avatar,
@@ -52,6 +53,10 @@ export default class SinglePost extends React.Component {
       url: uri
     });
   };
+
+  saveBookMark = async post_id => {
+    this.setState({bookmark: true});
+  }
 
   render() {
     let post = this.state.post;
