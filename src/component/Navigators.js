@@ -22,6 +22,16 @@ export default function Navigator() {
     );
   }
 
+  function CategorieStack() {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen name="Categories" component={Categories} />
+            <Stack.Screen name="CategorieList" component={CategorieList} />
+        </Stack.Navigator>
+    );
+}
+
+
   const Tab = createBottomTabNavigator()
   return (
     <NavigationContainer>
@@ -49,7 +59,7 @@ export default function Navigator() {
         }}
        > 
       <Tab.Screen name="Home" component={HomeStack} />
-      <Tab.Screen name="Categories" component={Categories} />
+      <Tab.Screen name="Categories" component={CategorieStack} />
       <Tab.Screen name="Bookmark" component={Bookmark} />
       <Tab.Screen name="Settings" component={Settings} />
     </Tab.Navigator>
