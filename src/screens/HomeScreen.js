@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, FlatList, ActivityIndicator } from 'react-native';
+import { Text, View, FlatList, ActivityIndicator, TouchableOpacity } from 'react-native';
 import {
   Avatar,
   Button,
@@ -7,9 +7,15 @@ import {
   Title,
   Paragraph,
   List,
-  Headline,
+  Headline
 } from 'react-native-paper';
+<<<<<<< HEAD
 import ContentPlaceholder from '../component/ContentPlaceholder';
+=======
+import ContentPlaceholder from '../component/ContentPlaceholder'
+import SinglePost from './SinglePost';
+
+>>>>>>> development
 export class Home extends Component {
   constructor(props) {
     super(props);
@@ -56,10 +62,17 @@ export class Home extends Component {
     );
   };
 
+<<<<<<< HEAD
   render() { 
     if (this.state.isFetching) {
       return <ContentPlaceholder /> 
     } else {
+=======
+  render() {
+    if (this.state.isFetching) {
+      return <ContentPlaceholder />;
+    } else { 
+>>>>>>> development
       return ( 
       <View> 
        <Headline style={{ marginLeft: 30 }}>Lastest Post</Headline>
@@ -71,6 +84,12 @@ export class Home extends Component {
           onEndReachedThreshold={0.1}
           ListFooterComponent={this.renderFooter}
           renderItem={({ item }) => (
+            <TouchableOpacity
+              onPress={() =>
+                this.props.navigation.navigate('SinglePost', {
+                   post_id: item.id
+                })
+              }> 
               <Card
                 style={{
                   shadowOffset: { width: 5, height: 5 },
@@ -86,6 +105,7 @@ export class Home extends Component {
                   source={{ uri: item.jetpack_featured_media_url }}
                 />
               </Card>
+            </TouchableOpacity>
           )}
           keyExtractor={index => index.toString()}
       />
@@ -94,8 +114,13 @@ export class Home extends Component {
   }
 }
 
+<<<<<<< HEAD
 renderFooter = () => {
   if (this.state.isFetching) return null;
+=======
+  renderFooter = () => {
+    if (this.state.isFetching) return null;
+>>>>>>> development
     return (
       <View
         style={{
@@ -108,6 +133,6 @@ renderFooter = () => {
       </View>
     );
   };
-}
+
 
 export default Home

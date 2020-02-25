@@ -5,11 +5,23 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Bookmark from '../screens/Bookmark.js';
 import Categories from '../screens/Categories.js';
 import Settings from '../screens/Settings.js';
-import HomeStack from '../component/HomeStack.js';
+import HomeScreen from '../screens/HomeScreen.js';
+import SinglePost from '../screens/SinglePost';
+// import HomeStack from '../component/HomeStack.js';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 
 export default function Navigator() {
+  const Stack = createStackNavigator();
+  function HomeStack() {
+    return (
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="SinglePost" component={SinglePost} />
+      </Stack.Navigator>
+    );
+  }
+
   const Tab = createBottomTabNavigator()
   return (
     <NavigationContainer>
