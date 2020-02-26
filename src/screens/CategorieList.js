@@ -16,7 +16,7 @@ import {
 import moment from 'moment';
 import HTMLRender from 'react-native-htmlview';
 import ImageLoad from 'react-native-image-placeholder';
-import ContentCard from "../component/withTheme";
+import ContentCard from '../component/ContentCard.js';
 
 
 export default class CategorieList extends React.Component {
@@ -48,7 +48,7 @@ export default class CategorieList extends React.Component {
             data={this.state.posts}
             renderItem={({ item }) => (
               <ContentCard item={item} navigation={this.props.navigation} />
-            )}
+           )}
             keyExtractor={(item, index) => index.toString()}
           />
         </View>
