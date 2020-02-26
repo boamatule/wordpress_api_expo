@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { FlatList, ScrollView, View, TouchableOpacity } from "react-native";
 import { Card, Title } from "react-native-paper";
-
+import ContentCard from '../component/ContentCard.js'
 export default class Categories extends Component {
   constructor(props) {
     super(props);
@@ -11,6 +11,7 @@ export default class Categories extends Component {
       categories: []
     };
   }
+  
 
   componentDidMount() {
     this.fetchcategorie();
@@ -33,7 +34,7 @@ export default class Categories extends Component {
           renderItem={({ item }) => (
             <TouchableOpacity
               onPress={() =>
-                this.props.navigation.navigate("Categories", {
+                this.props.navigation.navigate('CategorieList', {
                   categorie_id: item.id,
                   categorie_name: item.name
                 })

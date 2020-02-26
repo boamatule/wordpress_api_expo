@@ -10,7 +10,6 @@ import {
   Headline
 } from 'react-native-paper';
 import ContentPlaceholder from '../component/ContentPlaceholder'
-import SinglePost from './SinglePost';
 
 export class Home extends Component {
   constructor(props) {

@@ -6,7 +6,8 @@ import Bookmark from '../screens/Bookmark.js';
 import Categories from '../screens/Categories.js';
 import Settings from '../screens/Settings.js';
 import HomeScreen from '../screens/HomeScreen.js';
-import SinglePost from '../screens/SinglePost';
+import SinglePost from '../screens/SinglePost.js';
+import CategorieList from '../screens/CategorieList.js';
 // import HomeStack from '../component/HomeStack.js';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
