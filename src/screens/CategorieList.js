@@ -24,6 +24,7 @@ export default class CategorieList extends React.Component {
     super(props);
     this.state = {
       post: [],
+      isFetching: false,
     };
   }
 
@@ -40,16 +41,20 @@ export default class CategorieList extends React.Component {
   }
 
   render() { 
+    if (this.state.isloading) {
+      return <ContentPlaceholder />;
+    }
     let categorie_name = this.props.route.params.categorie_name
       return (
         <View>
           <Title style={{ marginLeft: 30 }} >{categorie_name}</Title>
           <FlatList
             data={this.state.posts}
+            refreshing={this.state.isFetching}
             renderItem={({ item }) => (
               <ContentCard item={item} navigation={this.props.navigation} />
            )}
-            keyExtractor={(item, index) => index.toString()}
+            keyExtractor={  index => index.toString()}
           />
         </View>
       );

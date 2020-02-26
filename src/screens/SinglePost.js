@@ -100,14 +100,14 @@ class SinglePost extends React.Component {
   render() {
     let post = this.state.post;
     const {colors} = this.props.theme;
-    if (this.state.isloading) {
-      return <ContentPlaceholder />;
-    }
+    // if (this.state.isloading) {
+    //   return <ContentPlaceholder />;
+    // }
     return (
       <ScrollView>
         <Card>
           <Card.Content>
-            <Title>{post[0].title.rendered}</Title>
+            {/* <Title>{post[0].title.rendered}</Title> */}
             <List.Item
               title={`${post[0]._embedded.author[0].name}`}
               description={`${post[0]._embedded.author[0].description}`}
