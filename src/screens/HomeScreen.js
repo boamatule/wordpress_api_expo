@@ -13,7 +13,6 @@ import {
 import ContentPlaceholder from '../component/ContentPlaceholder';
 =======
 import ContentPlaceholder from '../component/ContentPlaceholder'
-import SinglePost from './SinglePost';
 
 >>>>>>> development
 export class Home extends Component {
