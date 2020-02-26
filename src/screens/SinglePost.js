@@ -13,14 +13,15 @@ import {
   Card,
   Paragraph,
   List,
-  Title
+  Title,
+  withTheme
 } from "react-native-paper";
 import HTML from "react-native-htmlview";
 import moment from "moment";
 import ContentPlaceholder from "../component/ContentPlaceholder";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-export default class SinglePost extends React.Component {
+class SinglePost extends React.Component {
   constructor(props) {
     super(props);
 
@@ -98,6 +99,7 @@ export default class SinglePost extends React.Component {
 
   render() {
     let post = this.state.post;
+    const {colors} = this.props.theme;
     if (this.state.isloading) {
       return <ContentPlaceholder />;
     }
@@ -169,10 +171,21 @@ export default class SinglePost extends React.Component {
           </Card.Content>
           <Card.Cover source={{ uri: post[0].jetpack_featured_media_url }} />
           <Card.Content>
-            <HTML value={post[0].content.rendered} addLineBreaks={false} />
+            <HTML value={post[0].content.rendered} addLineBreaks={false} 
+            stylesheet={{
+              p: {
+                color: colors.text, // make links coloured pink
+              },
+              pre: {
+                color: colors.primary, // make links coloured pink
+              }
+            }}
+          />
           </Card.Content>
         </Card>
       </ScrollView>
     );
   }
 }
+
+export default withTheme(SinglePost)

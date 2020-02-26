@@ -16,7 +16,7 @@ import {
 import moment from 'moment';
 import HTMLRender from 'react-native-htmlview';
 import ImageLoad from 'react-native-image-placeholder';
-import ContentCard from '../component/ContentCard.js'
+import ContentCard from "../component/withTheme";
 
 
 export default class CategorieList extends React.Component {
@@ -40,7 +40,7 @@ export default class CategorieList extends React.Component {
   }
 
   render() { 
-    // let categorie_name = this.props.route.params.categorie_name
+    let categorie_name = this.props.route.params.categorie_name
       return (
         <View>
           <Title style={{ marginLeft: 30 }} >{categorie_name}</Title>

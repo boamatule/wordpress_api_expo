@@ -7,11 +7,13 @@ import {
   Paragraph,
   List,
   Headline,
+  withTheme,
 } from 'react-native-paper';
 import HTMLRender from 'react-native-htmlview'
 import ImageLoad from 'react-native-image-placeholder';
 import moment from 'moment'
-export default ({ item, navigation }) => {
+
+const ContentCard = ({ item, navigation, theme }) => {
   return (
     <View>
         <TouchableOpacity
@@ -38,10 +40,19 @@ export default ({ item, navigation }) => {
                     source={{ uri: item.jetpack_featured_media_url }}
                 />
                 <Card.Content>
-                    <HTMLRender value={item.excerpt.rendered} />
+                  <HTMLRender value={item.excerpt.rendered}
+                  stylesheet={{
+                    p: {
+                      fontWeight: '300',
+                      color: theme.colors.text, 
+                    }
+                  }}
+                   />
                 </Card.Content>
             </Card>
         </TouchableOpacity>
     </View>
   )
 }
+
+export default withTheme(ContentCard)
