@@ -40,7 +40,7 @@ export default class CategorieList extends React.Component {
   }
 
   render() { 
-    let categorie_name = this.props.route.params.categorie_name
+    // let categorie_name = this.props.route.params.categorie_name
       return (
         <View>
           <Title style={{ marginLeft: 30 }} >{categorie_name}</Title>

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { FlatList, ScrollView, View, TouchableOpacity } from "react-native";
 import { Card, Title } from "react-native-paper";
-import ContentCard from '../component/ContentCard.js'
 export default class Categories extends Component {
   constructor(props) {
     super(props);
