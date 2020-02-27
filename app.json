@@ -25,6 +25,18 @@
     ],
     "ios": {
       "supportsTablet": true
+    },
+    "extra": {
+      "firebase": {
+      "apiKey": "AIzaSyA1rfcvC0XF8zHHTAdWJPMeJOFg2p85VlQ",
+      "authDomain": "wordpress-react-native.firebaseapp.com",
+      "databaseURL": "https://wordpress-react-native.firebaseio.com",
+      "projectId": "wordpress-react-native",
+      "storageBucket": "wordpress-react-native.appspot.com",
+      "messagingSenderId": "547918345551",
+      "appId": "1:547918345551:web:1cbe5f3c3fa09ffc78413a",
+      "measurementId": "G-Q6VZ0RH5QM"  
     }
   }
+}
 }

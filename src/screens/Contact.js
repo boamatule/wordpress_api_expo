@@ -1,3 +1,4 @@
+import React, { Component } from "react";
 import {
   View,
   StyleSheet,
@@ -7,10 +8,14 @@ import {
   ActivityIndicator,
   Image,
 } from 'react-native';
-import firebase from 'react-native-firebase';
+// import firebase from 'react-native-firebase';
 import t from 'tcomb-form-native';
+import firebase from "../component/Firebase";
+// import {Formik} from 'formik';
+// import * as Yup from 'yup';
+import Constants from "expo-constants";
 
-export default class Contact extends Compoenent {
+export default class Contact extends Component {
   constructor(props) {
     super(props);
     this.state = {

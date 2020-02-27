@@ -16,7 +16,7 @@ import CategorieList from '../screens/CategorieList.js';
 // import HomeStack from '../component/HomeStack.js';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { ThemeContext } from "../component/ThemeController";
-
+import Contact from '../screens/Contact.js';
 
 export default function Navigator() {
   const { theme } = useContext(ThemeContext);
@@ -29,6 +29,7 @@ export default function Navigator() {
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="SinglePost" component={SinglePost} />
+        {/* <Stack.Screen name="Contact" component={Contact} /> */}
       </Stack.Navigator>
     );
   }
@@ -38,6 +39,8 @@ export default function Navigator() {
         <Stack.Navigator>
             <Stack.Screen name="Categories" component={Categories} />
             <Stack.Screen name="CategorieList" component={CategorieList} />
+            {/* <Stack.Screen name="Contact" component={Contact} /> */}
+
         </Stack.Navigator>
     );
 }
