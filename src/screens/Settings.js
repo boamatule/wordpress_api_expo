@@ -2,7 +2,8 @@ import React, { Component, useContext } from "react";
 import { Text, View, TouchableOpacity } from "react-native";
 import { List, Switch } from "react-native-paper";
 import { ThemeContext } from "../component/ThemeController";
-const Setting = () => {
+
+const Settings = () => {
   const { toggleTheme, theme } = useContext(ThemeContext);
   return (
     <View>

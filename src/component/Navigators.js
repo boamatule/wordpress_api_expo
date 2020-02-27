@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { useContext } from 'react';
 import { NavigationContainer,  DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -15,9 +15,14 @@ import SinglePost from '../screens/SinglePost.js';
 import CategorieList from '../screens/CategorieList.js';
 // import HomeStack from '../component/HomeStack.js';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { ThemeContext } from "../component/ThemeController";
 
 
 export default function Navigator() {
+  const { theme } = useContext(ThemeContext);
+  let paper_theme = theme ? PaperDarkTheme : PaperDefaultTheme;
+  let nav_theme = theme ? DarkTheme : DefaultTheme;
+
   const Stack = createStackNavigator();
   function HomeStack() {
     return (
@@ -40,8 +45,8 @@ export default function Navigator() {
 
   const Tab = createBottomTabNavigator()
   return (
-    <PaperProvider theme={PaperDarkTheme} > 
-      <NavigationContainer theme={DarkTheme}>
+    <PaperProvider theme={paper_theme} > 
+      <NavigationContainer theme={nav_theme}>
         <Tab.Navigator screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
