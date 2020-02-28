@@ -29,7 +29,6 @@ export default function Navigator() {
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="SinglePost" component={SinglePost} />
-        {/* <Stack.Screen name="Contact" component={Contact} /> */}
       </Stack.Navigator>
     );
   }
@@ -39,12 +38,17 @@ export default function Navigator() {
         <Stack.Navigator>
             <Stack.Screen name="Categories" component={Categories} />
             <Stack.Screen name="CategorieList" component={CategorieList} />
-            {/* <Stack.Screen name="Contact" component={Contact} /> */}
-
         </Stack.Navigator>
     );
-}
+  }
 
+  function ContactStack() {
+    return (
+      <Stack.Navigator>
+        <Stack.Screen name="Contact" component={Contact} />
+      </Stack.Navigator>
+    );
+  }
 
   const Tab = createBottomTabNavigator()
   return (
@@ -76,7 +80,8 @@ export default function Navigator() {
         <Tab.Screen name="Home" component={HomeStack} />
         <Tab.Screen name="Categories" component={CategorieStack} />
         <Tab.Screen name="Bookmark" component={Bookmark} />
-        <Tab.Screen name="Settings" component={Settings} />
+        <Tab.Screen name="Settings" component={ContactStack} />
+        {/* <Tab.Screen name="Contact" component={Contact} /> */}
       </Tab.Navigator>
 
       </NavigationContainer>
